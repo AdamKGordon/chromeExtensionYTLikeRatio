@@ -18,6 +18,7 @@ function main() {
         const observer = createMutationObserverForCreateAndDisplayLikeRatios();
         var placesToObserver = [];
         var mainPageContentDiv = getMainPageContentDiv(); placesToObserver.push(mainPageContentDiv); // div where new video elements are added
+        var channelVideosPageContentDiv = getChannelVideosPageContentDiv(); placesToObserver.push(channelVideosPageContentDiv); // div where new video elements are added // eg page https://www.youtube.com/c/JackBoii/videos
         var videoPageItemsDiv  = getVideoPageItemsDiv(); placesToObserver.push(videoPageItemsDiv); // TODO: FIXME currently will observer each anchor going in individually and will make make calls // div where new video elements are added
         if (window.location.href.includes("youtube.com/results") == true) {document.addEventListener("scroll", createAndDisplayLikeRatios);}    // TODO: DO THE FIXME AND REMOVE THIS BANDAID FIX
         //var searchPageItemsDiv  = getSearchPageItemsDiv(); placesToObserver.push(searchPageItemsDiv);  // TODO: FIXME     // div where a new div is added where new vid elements are added inside
@@ -34,6 +35,15 @@ function main() {
 function getMainPageContentDiv() {
     var videoPageItemsDiv = document.getElementById("contents") || [];
     if (videoPageItemsDiv.className == "style-scope ytd-rich-grid-renderer") {
+        return videoPageItemsDiv;
+    };
+
+    return [];
+}
+
+function getChannelVideosPageContentDiv() {
+    var videoPageItemsDiv = document.getElementById("items") || [];
+    if (videoPageItemsDiv.className == "style-scope ytd-grid-renderer") {
         return videoPageItemsDiv;
     };
 
@@ -171,7 +181,7 @@ async function getApiResponseStatistics(vidIDs) {
     //console.log(url);
     const response = await fetch(url);
     var data = await response.json();
-   return data;
+    return data;
 }
 
 function createAndInsertSpan(likeRatioStr, thumbnailAnchor) {
