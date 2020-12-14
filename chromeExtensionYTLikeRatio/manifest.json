@@ -1,0 +1,20 @@
+{
+  "name": "YouTube Like Ratio",
+  "version": "1.0",
+  "manifest_version": 2,
+  "author": "Adam Gordon",
+  "description": "Displays the YouTube video's like ratio on its thumbnail",
+  "permissions": ["tabs"],
+  "icons": { "16": "youtubeThumbsUp16.png",
+             "48": "youtubeThumbsUp48.png",
+             "128": "youtubeThumbsUp128.png"},
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_title": "YouTube Like Ratio"
+  }
+}
