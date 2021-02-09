@@ -1,4 +1,3 @@
-// TODO: CLEAN CODE AND FIX MUTATIONS AND ADD MUTATIONS INSTEAD OF SCROLL
 main();
 // api auota: https://console.developers.google.com/apis/api/youtube.googleapis.com/metrics?project=chromeextensionytlikeratio&pageState=(%22duration%22:(%22groupValue%22:%22PT1H%22))
 function main() {
